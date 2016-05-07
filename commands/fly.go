@@ -35,6 +35,7 @@ type FlyCommand struct {
 	RenamePipeline  RenamePipelineCommand  `command:"rename-pipeline"  alias:"rp" description:"Rename a pipeline"`
 
 	CheckResource CheckResourceCommand `command:"check-resource"  alias:"cr" description:"Check a resource"`
+	EjectResource EjectResourceCommand `command:"eject-resource"  alias:"er" description:"Delete a specific resource version"`
 
 	Builds     BuildsCommand     `command:"builds"      alias:"bs" description:"List builds data"`
 	AbortBuild AbortBuildCommand `command:"abort-build" alias:"ab" description:"Abort a build"`
