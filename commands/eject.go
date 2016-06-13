@@ -48,6 +48,12 @@ dance:
 
 		for _, vr := range versionedResources {
 			if reflect.DeepEqual(version, vr.Version) {
+				//TODO delete volume from workers
+				// - this is hard. Currently there's only access to the baggagecollector when it gets kicked off in atccmd/command.go
+				// after that we never have a reference to it. We would need the baggagecollector to expose its own endpoint that we
+				// could hit, or let workers expose their volumes. Right now it seems all volume expiration happens through ttl's
+				// getting updated because they are no longer the newest version.
+				//TODO reap volume from db
 				found, err := client.DeleteResourceVersion(command.Resource.PipelineName, command.Resource.ResourceName, vr.ID)
 				if err != nil {
 					return err
